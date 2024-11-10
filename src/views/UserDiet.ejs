@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Diet Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1d1f2f;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #292c3e;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* Hero image */
+        .hero-image {
+            background-image: url('/images/diet-photo.jpg'); /* Local Image Path */
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #f39c12;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Style for diet content */
+        .diet-item {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #33344d;
+            border-left: 5px solid #f39c12;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .diet-item h2 {
+            font-size: 1.8em;
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+
+        .diet-item p {
+            font-size: 1.1em;
+            color: #d1d5e0;
+            line-height: 1.8;
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        /* Styling specific for the dynamic content */
+        .diet-item p span {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .no-content {
+            color: #bfc3d4;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="hero-image"></div> <!-- Local image displayed here -->
+
+        <h1>Your Diet Plan</h1>
+
+        <% if (content) { %>
+            <div class="diet-item">
+                <h2>Your Personalized Diet Plan</h2>
+                <p><%= content %></p> <!-- Dynamic content insertion -->
+            </div>
+        <% } else { %>
+            <p class="no-content">No diet content found for the selected goal and BMI range.</p>
+        <% } %>
+
+    </div>
+
+</body>
+</html>

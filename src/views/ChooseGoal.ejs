@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Fitness Goal</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Centered container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* Buttons styling */
+        .goal-btns {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 200px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Form styling */
+        .hidden-form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hidden-form input[type="hidden"] {
+            display: none;
+        }
+
+        /* Footer Styling */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: #888;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>What's Your Fitness Goal?</h1>
+        
+        <!-- Form that will submit the selected goal -->
+        <form id="goalForm" action="/submitGoal" method="POST" class="hidden-form">
+            <!-- Hidden input to send the goal via POST -->
+            <input type="hidden" id="goal" name="goal" value="">
+            
+            <!-- New goal options -->
+            <div class="goal-btns">
+                <button type="button" onclick="setGoal('Fat Loss')">Fat Loss</button>
+                <button type="button" onclick="setGoal('Muscle Gain')">Muscle Gain</button>
+                <button type="button" onclick="setGoal('Endurance')">Endurance</button>
+            </div>
+
+            <!-- Submit button (this will be triggered after selecting a goal) -->
+            <button type="submit" style="display:none">Submit</button>
+        </form>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Gym | All Rights Reserved | 
+            <a href="http://localhost:5173/home" target="_blank" style="color: #3498db; text-decoration: none;">Contact Us</a>
+        </p>
+    </footer>
+
+    <script>
+        // Function to set the selected goal and submit the form
+        function setGoal(goal) {
+            // Set the value of the hidden input to the selected goal
+            document.getElementById("goal").value = goal;
+            
+            // Submit the form
+            document.getElementById("goalForm").submit();
+        }
+    </script>
+
+</body>
+</html>

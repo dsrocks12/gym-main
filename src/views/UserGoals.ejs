@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Goals</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="radio"], select {
+            margin-right: 10px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus, button:focus {
+            border-color: #007BFF;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-container a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 25px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            label, select, button {
+                font-size: 1em;
+            }
+        }
+    </style>
+    <script>
+        // Function to toggle email field visibility based on water reminder option
+        function toggleEmailInput() {
+            const waterYes = document.getElementById("water-yes").checked;
+            const emailField = document.getElementById("email-field");
+            emailField.style.display = waterYes ? "block" : "none";
+            const emailInput = document.getElementById("email");
+            emailInput.required = waterYes;
+        }
+    </script>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>User Goals</h1>
+        <form action="/UserGoals" method="POST">
+            <!-- Meal Type -->
+            <div>
+                <label>Select your preferred meal type:</label><br>
+                <input type="radio" id="veg" name="meal" value="veg" required>
+                <label for="veg">Veg</label><br>
+                <input type="radio" id="non-veg" name="meal" value="non-veg" required>
+                <label for="non-veg">Non-Veg</label><br>
+            </div>
+            
+            <!-- Workout Frequency -->
+            <div>
+                <label>How many times are you willing to work out in a week?</label><br>
+                <select name="workout_frequency" required>
+                    <option value="" disabled selected>Select frequency</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+
+            <!-- Experience Level -->
+            <div>
+                <label>What is your experience level?</label><br>
+                <input type="radio" id="beginner" name="experience_level" value="beginner" required>
+                <label for="beginner">Beginner</label><br>
+                <input type="radio" id="intermediate" name="experience_level" value="intermediate" required>
+                <label for="intermediate">Intermediate</label><br>
+                <input type="radio" id="advanced" name="experience_level" value="advanced" required>
+                <label for="advanced">Advanced</label><br>
+            </div>
+
+            <!-- Water Intake Reminder -->
+            <div>
+                <label>Do you want a water intake reminder?</label><br>
+                <input type="radio" id="water-yes" name="water_reminder" value="yes" required onclick="toggleEmailInput()">
+                <label for="water-yes">Yes</label><br>
+                <input type="radio" id="water-no" name="water_reminder" value="no" required onclick="toggleEmailInput()">
+                <label for="water-no">No</label><br>
+            </div>
+
+            <!-- Email Input (Hidden by default) -->
+            <div id="email-field" style="display: none;">
+                <label for="email">Enter your email for water intake reminders:</label><br>
+                <input type="email" id="email" name="email" placeholder="example@example.com">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

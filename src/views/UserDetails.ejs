@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus, button:focus {
+            border-color: #007BFF;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-container a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 25px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            label, select, button {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Let us get to know you better!</h1>
+        <form action="/UserDetails" method="POST">
+            <div>
+                <label>Select your gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label><br>
+            </div>
+            
+            <div>
+                <label for="age">Please choose your age category:</label>
+                <select id="age" name="age" required>
+                    <option value="" disabled selected>Select your age group</option>
+                    <option value="10-20">10-20</option>
+                    <option value="20-25">20-25</option>
+                    <option value="25-30">25-30</option>
+                    <option value="30-40">30-40</option>
+                    <option value="40-50">40-50</option>
+                    <option value="50-60">50-60</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="height">Please choose your height (in inches):</label>
+                <select id="height" name="height" required>
+                    <option value="" disabled selected>Select your height</option>
+                    <option value="50">50 inches</option>
+                    <option value="52">52 inches</option>
+                    <option value="54">54 inches</option>
+                    <option value="56">56 inches</option>
+                    <option value="58">58 inches</option>
+                    <option value="60">60 inches</option>
+                    <option value="62">62 inches</option>
+                    <option value="64">64 inches</option>
+                    <option value="66">66 inches</option>
+                    <option value="68">68 inches</option>
+                    <option value="70">70 inches</option>
+                    <option value="72">72 inches</option>
+                    <option value="74">74 inches</option>
+                    <option value="76">76 inches</option>
+                    <option value="78">78 inches</option>
+                    <option value="80">80 inches</option>
+                    <option value="82">82 inches</option>
+                    <option value="84">84 inches</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="weight">Please choose your weight (in kg):</label>
+                <select id="weight" name="weight" required>
+                    <option value="" disabled selected>Select your weight</option>
+                    <option value="30">30 kg</option>
+                    <option value="35">35 kg</option>
+                    <option value="40">40 kg</option>
+                    <option value="45">45 kg</option>
+                    <option value="50">50 kg</option>
+                    <option value="55">55 kg</option>
+                    <option value="60">60 kg</option>
+                    <option value="65">65 kg</option>
+                    <option value="70">70 kg</option>
+                    <option value="75">75 kg</option>
+                    <option value="80">80 kg</option>
+                    <option value="85">85 kg</option>
+                    <option value="90">90 kg</option>
+                    <option value="95">95 kg</option>
+                    <option value="100">100 kg</option>
+                    <option value="105">105 kg</option>
+                    <option value="110">110 kg</option>
+                    <option value="115">115 kg</option>
+                    <option value="120">120 kg</option>
+                    <option value="125">125 kg</option>
+                    <option value="130">130 kg</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

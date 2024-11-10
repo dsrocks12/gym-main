@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Exercise Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1d1f2f;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #292c3e;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* Hero image */
+        .hero-image {
+            background-image: url('/images/exercise-photo.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #f39c12;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Style for each exercise item */
+        .exercise-item {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #33344d;
+            border-left: 5px solid #f39c12;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .exercise-item h2 {
+            font-size: 1.8em;
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+
+        .exercise-item p {
+            font-size: 1.1em;
+            color: #d1d5e0;
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+
+        /* Center-align the image */
+        .center {
+            text-align: center;
+        }
+
+        .exercise-item img {
+            display: block;
+            margin: 15px auto;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        /* Fallback message */
+        .no-content {
+            color: #bfc3d4;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="hero-image"></div>
+
+        <h1>Your Exercise Plan</h1>
+
+        <% if (exercises && exercises.length > 0) { %>
+            <% exercises.forEach((exercise, index) => { %>
+                <div class="exercise-item">
+                    <h2>Exercise <%= index + 1 %>: <%= exercise.title %></h2>
+                    <% if (exercise.img) { %>
+                        <div class="center">
+                            <img src="<%= exercise.img %>" alt="Exercise Image">
+                        </div>
+                    <% } %>
+                    <p><%= exercise.content %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="no-content">No exercises found for your selected goal.</p>
+        <% } %>
+    </div>
+
+</body>
+</html>
